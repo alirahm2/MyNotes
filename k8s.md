@@ -1,7 +1,7 @@
 # Kubectl useful commands
 
 ### Deploy a file 
-` $ kb create -f [file name] `
+``` $ kb create -f [file name] ```
 
 ---
 ### Replace a new deployment
