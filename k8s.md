@@ -1,9 +1,10 @@
 # Kubectl useful commands
 
+### Load local image in Minikube local registry
+[link 1](https://stackoverflow.com/questions/42564058/how-to-use-local-docker-images-with-minikube)
+
 ### Deploy a file 
 ` $ kb create -f [file name] `
-
-
 
 ### Replace a new deployment
 ` $ kb replace -f [file name] `
@@ -25,3 +26,4 @@
 
 ### Scale replica set
 `$ kb scale --replicas=0  replicaset [replicaset name]`
+
