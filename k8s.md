@@ -24,6 +24,41 @@
 ### Get all ReplicaSets
 `$ kb get replicasets`
 
-### Scale replica set
-`$ kb scale --replicas=0  replicaset [replicaset name]`
+### get deployment info
+`$ kb get deployment`
+
+### Scale get all namespaces
+`$ kubectl get pods --all-namespaces `
+
+### Set current namespace
+`$ kubectl config set-context --current --namespace=my-namespace`
+
+### Get pods in different namespace
+`$ kb get pods --namespace=[namespace name]`
+
+### Create deployment in different namespace than default 
+`$ kb create -f [file name] --namespace=[namespace name]`
+
+### Create namespace
+`$ kb create namespace [namespace name]`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
