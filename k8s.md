@@ -27,7 +27,7 @@
 ### get deployment info
 `$ kb get deployment`
 
-### Scale get all namespaces
+### Get all namespaces
 `$ kubectl get pods --all-namespaces `
 
 ### Set current namespace
