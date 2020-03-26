@@ -43,20 +43,32 @@
 `$ kb create namespace [namespace name]`
 
 
+### Create configmap(From k/v)
+`$ kb create configmap [name] --from-literal [key=value]`
+
+### Create configmap(From file)
+`$ kb create configmap [name] --from-file [file name]`
 
 
+### see configmps
+`$ kb get configmaps`
+
+### describe configmaps
+`$ kb describe configmaps`
+
+### Create secrets(From k/v)
+`$ kb create secret [name] --from-literal [key=value]`
+
+### Create secrets(From file)
+`$ kb create secret [name] --from-file [file name]`
 
 
+### see all secrets
+`$ kb get secrets`
 
 
-
-
-
-
-
-
-
-
+### see the value of secrets
+`$ kb describe secret [secret name] --output=yaml`
 
 
 
