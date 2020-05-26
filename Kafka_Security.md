@@ -7,7 +7,7 @@ listeners=SASL_PLAINTEXT://0.0.0.0:9093
 advertised.listeners=SASL_PLAINTEXT://localhost:9093
 ```
 
-# PLAN and SCRAM
+## PLAN and SCRAM
 ```
 sasl.enabled.mechanisms=SCRAM-SHA-256,PLAIN
 sasl.mechanism.inter.broker.protocol=SCRAM-SHA-256
@@ -16,13 +16,13 @@ listeners=SASL_PLAINTEXT://0.0.0.0:9093,PLAINTEXT://0.0.0.0:9092
 advertised.listeners=SASL_PLAINTEXT://localhost:9093,PLAINTEXT://localhost:9092
 ```
 
-# Create user and password
+## Create user and password
 ```
 bin/kafka-configs.sh --zookeeper localhost:2181 --alter --add-config 'SCRAM-SHA-256=[iterations=8192,password=done],
 SCRAM-SHA-512=[password=done]' --entity-type users --entity-name done
 ```
 
-# Python API Example - Producer - PLAN
+## Python API Example - Producer - PLAN
 ```python
 import time
 
@@ -37,7 +37,7 @@ for i in range(10):
 
 ```
 
-# Python API Example - Producer - SCRAM
+## Python API Example - Producer - SCRAM
 ```python
 import time
 
@@ -64,7 +64,7 @@ for i in range(10):
 ```
 
 
-# Python API Example - Consumer- PLAN
+## Python API Example - Consumer- PLAN
 ```python
 import time
 from kafka import KafkaConsumer
@@ -83,7 +83,7 @@ while True:
 ```
 
 
-# Python API Example - Consumer- SCRAM
+## Python API Example - Consumer- SCRAM
 ```python
 import time
 from kafka import KafkaConsumer
@@ -111,4 +111,5 @@ while True:
     time.sleep(1)
 
 ```
+
 
