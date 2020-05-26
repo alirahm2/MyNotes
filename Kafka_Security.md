@@ -115,4 +115,41 @@ while True:
 
 ```
 
+## Java API Example - Consumer- SCRAM
+```java
+package com.revolut.esbridge;
+
+import org.apache.kafka.clients.producer.KafkaProducer;
+import org.apache.kafka.clients.producer.Producer;
+import org.apache.kafka.clients.producer.ProducerConfig;
+import org.apache.kafka.clients.producer.ProducerRecord;
+import org.apache.kafka.common.serialization.StringSerializer;
+import java.util.Properties;
+
+
+public class Main {
+    public static void main(String[] args) {
+        String jaasTemplate = "org.apache.kafka.common.security.scram.ScramLoginModule required username=\"%s\" password=\"%s\";";
+        String jaasCfg = String.format(jaasTemplate, "done", "done");
+
+        ProducerRecord<String, String> message = new ProducerRecord<>("jasem", "salam");
+
+
+        Properties props = new Properties();
+        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9093");
+        props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
+        props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
+
+        props.put("security.protocol", "SASL_PLAINTEXT");
+        props.put("sasl.mechanism", "SCRAM-SHA-256");
+        props.put("sasl.jaas.config", jaasCfg);
+
+
+        Producer<String, String> producer = new KafkaProducer<>(props);
+
+        producer.send(message);
+        producer.flush();
+    }
+}
+```
 
