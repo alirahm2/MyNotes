@@ -129,7 +129,8 @@ import java.util.Properties;
 
 public class Main {
     public static void main(String[] args) {
-        String jaasTemplate = "org.apache.kafka.common.security.scram.ScramLoginModule required username=\"%s\" password=\"%s\";";
+        String jaasTemplate = "org.apache.kafka.common.security.scram.ScramLoginModule " +
+                "required username=\"%s\" password=\"%s\";";
         String jaasCfg = String.format(jaasTemplate, "done", "done");
 
         ProducerRecord<String, String> message = new ProducerRecord<>("jasem", "salam");
