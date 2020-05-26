@@ -1,16 +1,28 @@
 ## Introduction to Apache Kafka Security 
 https://medium.com/@stephane.maarek/introduction-to-apache-kafka-security-c8951d410adf
 
-## SCRAM
+## How to enable PLAN and SCRAM security option on Kafka cluster
+
+### add following to `afka-server-start.sh`
 ```
-sasl.enabled.mechanisms=SCRAM-SHA-256
-sasl.mechanism.inter.broker.protocol=SCRAM-SHA-256
-security.inter.broker.protocol=SASL_PLAINTEXT
-listeners=SASL_PLAINTEXT://0.0.0.0:9093
-advertised.listeners=SASL_PLAINTEXT://localhost:9093
+export KAFKA_OPTS="-Djava.security.auth.login.config=[path]/kafka_server_jaas.conf"
+export JMX_PORT=${JMX_PORT:-9999}
 ```
 
-## PLAN and SCRAM
+### run the following command 
+```shell
+./bin/kafka-configs.sh --zookeeper localhost:2181 --alter --add-config 'SCRAM-SHA-256=[password=PASSWORD],SCRAM-SHA-512=[password=PASSWORD]' --entity-type users --entity-name USER
+```
+
+### create `kafka_server_jaas.conf` in config/ folder
+```
+KafkaServer {
+   org.apache.kafka.common.security.scram.ScramLoginModule required
+   username="USER"
+   password="PASSWORD";
+};
+```
+### add following configurations to `server.properties` file
 ```
 sasl.enabled.mechanisms=SCRAM-SHA-256,PLAIN
 sasl.mechanism.inter.broker.protocol=SCRAM-SHA-256
@@ -18,6 +30,7 @@ security.inter.broker.protocol=SASL_PLAINTEXT
 listeners=SASL_PLAINTEXT://0.0.0.0:9093,PLAINTEXT://0.0.0.0:9092
 advertised.listeners=SASL_PLAINTEXT://localhost:9093,PLAINTEXT://localhost:9092
 ```
+----
 
 ## Create user and password
 ```
