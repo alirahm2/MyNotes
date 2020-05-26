@@ -1,3 +1,6 @@
+## Introduction to Apache Kafka Security 
+https://medium.com/@stephane.maarek/introduction-to-apache-kafka-security-c8951d410adf
+
 ## SCRAM
 ```
 sasl.enabled.mechanisms=SCRAM-SHA-256
